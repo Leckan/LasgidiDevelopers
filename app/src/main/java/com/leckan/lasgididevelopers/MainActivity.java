@@ -4,7 +4,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-//import static android.app.PendingIntent.getActivity;
+// TODO:
+// 	• Creat List view containing
+//      ○ Image
+//      Username
+//  • OnClick event should open Activity
+//        ○ Username
+//        ○ Profile Photo
+ //       ○ Github url
+ //       § On click open
+//        ○ Share button
+ //       § “Check out this awesome developer @<github username>, <github profile url>.”
+
 
 public class MainActivity extends AppCompatActivity {
     private JSONParser jsonParser;

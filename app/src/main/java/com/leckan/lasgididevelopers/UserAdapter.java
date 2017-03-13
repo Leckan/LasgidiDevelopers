@@ -30,11 +30,13 @@ public class UserAdapter extends ArrayAdapter {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.user_list_view,parent,false);
-        ImageView userImage = (ImageView) row.findViewById(R.id.userpic);
+       // ImageView userImage = (ImageView) row.findViewById(R.id.userpic);
         TextView usernameText = (TextView) row.findViewById(R.id.txtusername);
 
-        userImage.setImageResource(imageArray[position]);
+       // userImage.setImageResource(imageArray[position]);
         usernameText.setText(usernameArray[position]);
+
+        new DownloadImageTask((ImageView) row.findViewById(R.id.userpic)).execute("http://feelgrafix.com/data/pictures/pictures-1.jpg");
         return row;
     }
 }

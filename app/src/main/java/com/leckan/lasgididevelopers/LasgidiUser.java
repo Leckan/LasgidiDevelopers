@@ -1,10 +1,12 @@
 package com.leckan.lasgididevelopers;
 
+import java.io.Serializable;
+
 /**
  * Created by Simpa on 3/12/2017.
  */
 
-public class LasgidiUser {
+public class LasgidiUser implements Serializable {
     private String login;
     private String id;
     private String avatar_url;

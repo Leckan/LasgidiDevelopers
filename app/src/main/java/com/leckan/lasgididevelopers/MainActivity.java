@@ -1,6 +1,7 @@
 package com.leckan.lasgididevelopers;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,14 +48,6 @@ public class MainActivity extends AppCompatActivity {
         listView= (ListView) findViewById(R.id.userListView);
         new GetUsers().execute();
 
-    }
-
-    private ArrayList<LasgidiUser> getListData() {
-        ArrayList<LasgidiUser> listMockData = new ArrayList<LasgidiUser>();
-        String[] images = getResources().getStringArray(R.array.images_array);
-        String[] headlines = getResources().getStringArray(R.array.headline_array);
-
-        return listMockData;
     }
 
 
@@ -159,7 +152,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                     LasgidiUser aUser = (LasgidiUser) listView.getItemAtPosition(position);
-                    Toast.makeText(MainActivity.this, "Selected :" + " " + aUser.getLogin(), Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    intent.putExtra("theLasgidiUser", aUser);
+                    startActivity(intent);
+                    //Toast.makeText(MainActivity.this, "Selected :" + " " + aUser.getLogin(), Toast.LENGTH_LONG).show();
                 }
             });
 

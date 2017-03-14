@@ -52,9 +52,9 @@ public class UserListAdapter extends BaseAdapter {
 
         LasgidiUser theUser = (LasgidiUser) listData.get(position);
 
-        holder.usernameView.setText(theUser.getDate());
+        holder.usernameView.setText(theUser.getLogin());
         if (holder.imageView != null) {
-            new DownloadImageTask(holder.imageView).execute(theUser.getUrl());
+            new DownloadImageTask(holder.imageView).execute(theUser.getAvatar_url());
         }
         return convertView;
     }

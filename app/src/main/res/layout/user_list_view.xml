@@ -6,10 +6,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id= "@+id/txtusername"/>
+        android:id= "@+id/txtusername"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id= "@+id/userpic"
+        android:src="@mipmap/userpic"
         android:layout_below="@id/txtusername"/>
 </RelativeLayout>

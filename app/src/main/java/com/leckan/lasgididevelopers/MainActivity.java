@@ -1,7 +1,11 @@
 package com.leckan.lasgididevelopers;
 
 import android.app.ProgressDialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,13 +48,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+      //  if(isConnectedToInternet()) {
+           listView = (ListView) findViewById(R.id.userListView);
+           new GetUsers().execute();
+   //     }
+     //   else
+     //  {
 
-        listView= (ListView) findViewById(R.id.userListView);
-        new GetUsers().execute();
-
+   //         Toast.makeText(MainActivity.this,"Sorry! No Internet Access. Try again", Toast.LENGTH_LONG).show();
+        //    Intent intent=new Intent(Settings.ACTION_MAIN);
+       //     ComponentName cName = new ComponentName("com.android.phone","com.android.phone.NetworkSetting");
+       //     intent.setComponent(cName);
+       // }
     }
 
+    public boolean isConnectedToInternet(){
+        ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null)
+        {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
+                    {
+                        return true;
+                    }
 
+        }
+        return false;
+    }
     private class GetUsers extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -161,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
+
 
     }
 
